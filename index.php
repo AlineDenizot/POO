@@ -1,40 +1,13 @@
 <?php
 
-require_once 'HighWay.php';
-require_once 'MotorWay.php';
-require_once 'PedestrianWay.php';
-require_once 'ResidentialWay.php';
-require_once 'Truck.php';
-require_once 'Bicycle.php';
 require_once 'Car.php';
+require_once 'Vehicle.php';
+require_once 'Bicycle.php';
 
-//Voies à tester
-$motor = new MotorWay;
-$pedestrian = new PedestrianWay;
-$residential = new ResidentialWay;
-
-//Vehicules à tester
-$truck = new Truck(4, 'blue', 3, 'fuel');
-$bike = new Bicycle('red', 2);
 $car= new Car ('red', 5, 'electric');
+$bicycle = new Bicycle ('red', 1);
 
-//Test pour MotorWay
-var_dump($motor->getCurrentVehicles());
-$motor->addVehicle($bike);
-$motor->addVehicle($truck);
-$motor->addVehicle($car);
-var_dump($motor->getCurrentVehicles());
+var_dump ($car->switchOn()) ;
 
-//Test pour PedestrianWay
-var_dump($pedestrian->getCurrentVehicles());
-$pedestrian->addVehicle($bike);
-$pedestrian->addVehicle($truck);
-$pedestrian->addVehicle($car);
-var_dump($pedestrian->getCurrentVehicles());
+var_dump ($bicycle->switchOn()) ;
 
-//Test pour ResidentialWay
-var_dump($residential->getCurrentVehicles());
-$residential->addVehicle($bike);
-$residential->addVehicle($truck);
-$residential->addVehicle($car);
-var_dump($residential->getCurrentVehicles());
