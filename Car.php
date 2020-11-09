@@ -1,9 +1,42 @@
 <?php
 
 require_once 'Vehicle.php';
+require_once 'LightableInterface.php';
 
-class Car extends Vehicle
+class Car extends Vehicle implements LightableInterface
 {
+    public function switchOn()
+    {
+        return true;
+    }
+
+    public function switchOff()
+    {
+        return false;
+    }
+
+    
+    private $hasParkBrake=true;
+    
+    public function setParkBrake(bool $hasParkBrake): void
+    {
+        $this->hasParkBrake = $hasParkBrake;
+    }
+
+    public function getParkBrake()
+    {
+        return $this->hasParkBrake ;
+    }
+
+    public function start()
+    {
+    if ($this->hasParkBrake == true) {
+        throw new Exception("Frein à main actif ");
+    }
+    }
+
+    //instruction demandé dans les autres quêtes
+    
     const ALLOWED_ENERGIES = [
         'fuel',
         'electric',
